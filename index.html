@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פלקס בוקסינג</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class= "game-container">
+    <section class="menu">
+      <header class="header">
+        <div class="title-group">
+          <h1>פלקס בוקסינג</h1>
+          <p class="subtitle">תרגול Flexbox בזירת האיגרוף</p>
+        </div>
+        <!-- בקרת שלבים -->
+        <div class="level-nav">
+          <button id="prev-btn" class="nav-btn" title="השלב הקודם" aria-label="השלב הקודם">&lt;</button>
+          <span id="level-indicator">שלב 1 מתוך 10</span>
+          <button id="next-btn" class="nav-btn" title="השלב הבא" aria-label="השלב הבא">&gt;</button>
+        </div>
+      </header>
+
+      <div class="instructions-card">
+        <h2 id="level-title">שלב 1</h2>
+        <p id="level-instructions" class="task-description">
+          טוען הוראות...
+        </p>
+      </div>
+
+      <!-- אזור קוד דינמי -->
+      <div class="code-editor">
+        <div class="editor-header">
+          <span class="file-name">style.css</span>
+        </div>
+        <pre class="code-container"><code><span class="code-line">#ring {</span><span class="code-line indent">display: flex;</span><div id="dynamic-controls"></div><span class="code-line">}</span></code></pre>
+      </div>
+
+      <!-- כפתורי פעולה -->
+      <div class="action-buttons">
+        <button id="submit-btn" class="btn btn-primary">בדוק מכה</button>
+        <button id="reset-btn" class="btn btn-secondary">אפס שלב</button>
+      </div>
+
+      <!-- אזור משוב -->
+      <div id="feedback" class="feedback-area hidden"></div>
+    </section>
+
+    <!-- זירת המשחק (הלוח הויזואלי) -->
+    <section class="view">
+        <div class="ring-wrapper">
+            <div class="ring-corner top-left"></div>
+            <div class="ring-corner top-right"></div>
+            <div class="ring-corner bottom-left"></div>
+            <div class="ring-corner bottom-right"></div>
+            
+            <div class="ring">
+                <!-- שכבת מטרות (שקי איגרוף) -->
+                <div id="target-layer" class="ring-layer"></div>
+                <!-- שכבת שחקן (כפפות איגרוף) -->
+                <div id="user-layer" class="ring-layer"></div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <!-- מודל ניצחון בסיום המשחק -->
+  <div id="victory-modal" class="modal hidden">
+      <div class="modal-content">
+          <div class="trophy-icon">🏆</div>
+          <h2>אלוף הזירה!</h2>
+          <p>כל הכבוד! השלמת את כל השלבים בהצלחה ושלטת במאפייני ה-Flexbox!</p>
+          <button id="restart-game-btn" class="btn btn-primary">שחק שוב מהתחלה</button>
+      </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

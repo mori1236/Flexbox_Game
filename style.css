@@ -1,0 +1,638 @@
+:root {
+    --bg-color: #0f111a;
+    --panel-bg: #1a1d2d;
+    --card-bg: #23273a;
+    --accent-gold: #ffd700;
+    --accent-red: #ff4757;
+    --accent-blue: #2ed573;
+    --accent-purple: #70a1ff;
+    --text-primary: #f1f2f6;
+    --text-secondary: #a4b0be;
+    --code-bg: #131520;
+    --ring-bg: #2f3542;
+    --ring-canvas: #353b48;
+    --ring-rope: #e74c3c;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Heebo', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1440px;
+    min-height: 720px;
+    background: var(--panel-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- פנל תפריט ושליטה --- */
+.menu {
+    flex: 1;
+    min-width: 320px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 15px;
+}
+
+.title-group h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffd700, #ff6b81);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ניווט שלבים */
+.level-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    padding: 6px 12px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: var(--accent-gold);
+    color: #000;
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#level-indicator {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    min-width:104px;
+    text-align: center;
+}
+
+/* הוראות השלב */
+.instructions-card {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: var(--radius);
+    border-right: 4px solid var(--accent-gold);
+    min-height: 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.instructions-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    color: var(--accent-gold);
+}
+
+.task-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+/* עורך הקוד */
+.code-editor {
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-header {
+    background: #0b0c12;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.file-name {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-right: auto;
+}
+
+.code-container {
+    padding: 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+    direction: ltr;
+    text-align: left;
+    flex: 1;
+}
+
+.code-line {
+    display: block;
+}
+
+.code-line.indent {
+    padding-left: 20px;
+    color: #89ddff;
+}
+
+.control-row {
+    padding-left: 20px;
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.property-label {
+    color: #c792ea;
+}
+
+.css-select {
+    background: #1e2233;
+    color: #ecc48d;
+    border: 1px solid #3b4261;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.css-select:focus {
+    border-color: var(--accent-gold);
+}
+
+/* כפתורי פעולה */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    flex: 2;
+    background: linear-gradient(135deg, #ff4757, #ff6b81);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+}
+
+.btn-secondary {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* אזור משוב */
+.feedback-area {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.feedback-area.success {
+    background: rgba(46, 213, 115, 0.15);
+    color: #2ed573;
+    border: 1px solid #2ed573;
+}
+
+.feedback-area.error {
+    background: rgba(255, 71, 87, 0.15);
+    color: #ff4757;
+    border: 1px solid #ff4757;
+}
+
+.feedback-area.info {
+    background: hsla(204, 100%, 58%, 0.15);
+    color: hsl(204, 100%, 68%);
+    border: 1px solid hsl(204, 100%, 68%);
+}
+
+.feedback-area.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* --- זירת המשחק (VIEW) --- */
+.view {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.ring-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 1 / 1;
+    background: var(--ring-canvas);
+    border: 12px solid #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 50px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* חבלי הזירה */
+.ring-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 3px solid var(--ring-rope);
+    border-radius: 12px;
+    pointer-events: none;
+    box-shadow: inset 0 0 10px rgba(231, 76, 60, 0.5);
+    z-index: 1;
+}
+
+/* פינות הזירה */
+.ring-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.ring-corner.top-left {
+    top: 4px;
+    left: 4px;
+    background: #e74c3c;
+}
+
+.ring-corner.top-right {
+    top: 4px;
+    right: 4px;
+    background: #3498db;
+}
+
+.ring-corner.bottom-left {
+    bottom: 4px;
+    left: 4px;
+    background: #3498db;
+}
+
+.ring-corner.bottom-right {
+    bottom: 4px;
+    right: 4px;
+    background: #e74c3c;
+}
+
+/* הלוח הפנימי */
+.ring {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
+    border-radius: 8px;
+}
+
+.ring-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#target-layer {
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 3;
+}
+
+#user-layer {
+    z-index: 4;
+}
+
+/* אלמנטים בזירה: שקי איגרוף וכפפות */
+.game-item {
+    width: 20%;
+    height: 20%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    margin: 6px;
+    position: relative;
+    user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-svg {
+    display: block;
+    height: 80%;
+    width: 80%;
+    transition: all 0.3s ease;
+}
+
+.boxing-glove {
+    background: rgba(20, 24, 38, 0.65);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.boxing-glove.color-red {
+    color: #ff4757;
+    border-color: rgba(255, 71, 87, 0.5);
+    box-shadow: 0 6px 18px rgba(255, 71, 87, 0.4);
+}
+
+.boxing-glove.color-blue {
+    color: #1e90ff;
+    border-color: rgba(30, 144, 255, 0.5);
+    box-shadow: 0 6px 18px rgba(30, 144, 255, 0.4);
+}
+
+.boxing-glove.color-green {
+    color: #2ed573;
+    border-color: rgba(46, 213, 115, 0.5);
+    box-shadow: 0 6px 18px rgba(46, 213, 115, 0.4);
+}
+
+.boxing-glove.color-yellow {
+    color: #ffd700;
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+}
+
+.boxing-glove.color-purple {
+    color: #a29bfe;
+    border-color: rgba(162, 155, 254, 0.5);
+    box-shadow: 0 6px 18px rgba(162, 155, 254, 0.4);
+}
+
+.boxing-glove.color-orange {
+    color: #ff793f;
+    border-color: rgba(255, 121, 63, 0.5);
+    box-shadow: 0 6px 18px rgba(255, 121, 63, 0.4);
+}
+
+.punch-bag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed currentColor;
+}
+
+.punch-bag.color-red {
+    color: #ff4757;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+}
+
+.punch-bag.color-blue {
+    color: #1e90ff;
+    box-shadow: 0 0 15px rgba(30, 144, 255, 0.3);
+}
+
+.punch-bag.color-green {
+    color: #2ed573;
+    box-shadow: 0 0 15px rgba(46, 213, 115, 0.3);
+}
+
+.punch-bag.color-yellow {
+    color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.punch-bag.color-purple {
+    color: #a29bfe;
+    box-shadow: 0 0 15px rgba(162, 155, 254, 0.3);
+}
+
+.punch-bag.color-orange {
+    color: #ff793f;
+    box-shadow: 0 0 15px rgba(255, 121, 63, 0.3);
+}
+
+/* תג מספר עבור מזהה פריט */
+.item-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #000;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* אנימציית פגיעה (Punch Effect) */
+@keyframes punchHit {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3) rotate(-10deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hit-animation {
+    animation: punchHit 0.4s ease-in-out;
+}
+
+@keyframes shakeError {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-8px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(8px);
+    }
+}
+
+.shake-animation {
+    animation: shakeError 0.4s ease-in-out;
+}
+
+/* מודל סיום ניצחון */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--panel-bg);
+    border: 2px solid var(--accent-gold);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+}
+
+.trophy-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* רספונסיביות למובייל */
+@media (max-width: 900px) {
+    .game-container {
+        flex-direction: column-reverse;
+        min-height: auto;
+    }
+
+    .instructions-card,
+    .code-editor {
+        min-height: auto;
+    }
+
+    .menu {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 20px;
+    }
+
+    .view {
+        padding: 20px;
+    }
+
+    .ring-wrapper {
+        max-width: 360px;
+    }
+}
