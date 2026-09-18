@@ -12,26 +12,28 @@
 <body>
   <div class= "game-container">
     <section class="menu">
-      <header class="header">
-        <div class="title-group">
-          <h1>פלקס בוקסינג</h1>
-          <p class="subtitle">תרגול Flexbox בזירת האיגרוף</p>
+      <div class="menu-top">
+        <header class="header">
+          <div class="title-group">
+            <h1>פלקס בוקסינג</h1>
+            <p class="subtitle">תרגול Flexbox בזירת האיגרוף</p>
+          </div>
+          <!-- בקרת שלבים -->
+          <div class="level-nav">
+            <button id="prev-btn" class="nav-btn" title="השלב הקודם" aria-label="השלב הקודם">&lt;</button>
+            <span id="level-indicator">שלב 1 מתוך 10</span>
+            <button id="next-btn" class="nav-btn" title="השלב הבא" aria-label="השלב הבא">&gt;</button>
+          </div>
+        </header>
+        
+        <div class="instructions-card">
+          <h2 id="level-title">שלב 1</h2>
+          <p id="level-instructions" class="task-description">
+            טוען הוראות...
+          </p>
         </div>
-        <!-- בקרת שלבים -->
-        <div class="level-nav">
-          <button id="prev-btn" class="nav-btn" title="השלב הקודם" aria-label="השלב הקודם">&lt;</button>
-          <span id="level-indicator">שלב 1 מתוך 10</span>
-          <button id="next-btn" class="nav-btn" title="השלב הבא" aria-label="השלב הבא">&gt;</button>
-        </div>
-      </header>
-
-      <div class="instructions-card">
-        <h2 id="level-title">שלב 1</h2>
-        <p id="level-instructions" class="task-description">
-          טוען הוראות...
-        </p>
       </div>
-
+        
       <!-- אזור קוד דינמי -->
       <div class="code-editor">
         <div class="editor-header">
@@ -40,14 +42,16 @@
         <pre class="code-container"><code><span class="code-line">#ring {</span><span class="code-line indent">display: flex;</span><div id="dynamic-controls"></div><span class="code-line">}</span></code></pre>
       </div>
 
-      <!-- כפתורי פעולה -->
-      <div class="action-buttons">
-        <button id="submit-btn" class="btn btn-primary">בדוק מכה</button>
-        <button id="reset-btn" class="btn btn-secondary">אפס שלב</button>
+      <div class="menu-buttom">
+        <!-- אזור משוב -->
+        <div id="feedback" class="feedback-area hidden"></div>
+        
+        <!-- כפתורי פעולה -->
+        <div class="action-buttons">
+          <button id="submit-btn" class="btn btn-primary">בדוק מכה</button>
+          <button id="reset-btn" class="btn btn-secondary">אפס שלב</button>
+        </div>
       </div>
-
-      <!-- אזור משוב -->
-      <div id="feedback" class="feedback-area hidden"></div>
     </section>
 
     <!-- זירת המשחק (הלוח הויזואלי) -->
