@@ -7,7 +7,7 @@ const levels = [
   {
     id: 1,
     title: "שלב 1: מכה במרכז הזירה",
-    instructions: "ברוכים הבאים לזירה! סדרו את כפפת האיגרוף במרכז הזירה אופקית כדי לפגוע בשק האיגרוף.",
+    instructions: "ברוכים הבאים לזירה! סדרו את כפפת האיגרוף במרכז הזירה בחלקה העליון כדי לפגוע בשק האיגרוף.",
     controls: ["justify-content"],
     targetSolution: {
       "justify-content": ["center", "space-around", "space-evenly"]
@@ -54,8 +54,8 @@ const levels = [
   },
   {
     id: 4,
-    title: "שלב 4: מנוף משולב (פינה ימנית תחתונה)",
-    instructions: "שלבו בין justify-content ל-align-items כדי להביא את הכפפות לפינה הימנית התחתונה של הזירה.",
+    title: "שלב 4: מנוף משולב (פינה שמאלית תחתונה)",
+    instructions: "שלבו בין justify-content ל-align-items כדי להביא את הכפפות לפינה השאמלית התחתונה של הזירה.",
     controls: ["justify-content", "align-items"],
     targetSolution: {
       "justify-content": "flex-end",
@@ -93,8 +93,8 @@ const levels = [
   },
   {
     id: 6,
-    title: "שלב 6: פיזור רוחבי (space-between)",
-    instructions: "השתמשו ב-justify-content: space-between וב-align-items: center כדי לפזר את 3 הכפפות במרווח שווה בין הקצוות במרכז האנכי של הזירה.",
+    title: "שלב 6: פיזור רוחבי",
+    instructions: "השתמשו ב-justify-content וב-align-items כדי לפזר את 3 הכפפות במרווח שווה בין הקצוות במרכז האנכי של הזירה.",
     controls: ["justify-content", "align-items"],
     targetSolution: {
       "justify-content": "space-between",
@@ -113,8 +113,8 @@ const levels = [
   },
   {
     id: 7,
-    title: "שלב 7: איגרוף הפוך (row-reverse)",
-    instructions: "סדרו את הכפפות בסדר הפוך מימין לשמאל באמצעות flex-direction: row-reverse ופזרו אותן במרווחים שווים עם justify-content: space-around!",
+    title: "שלב 7: איגרוף הפוך",
+    instructions: "סדרו את הכפפות בסדר הפוך מימין לשמאל באמצעות flex-direction ופזרו אותן במרווחים שווים עם justify-content!",
     controls: ["flex-direction", "justify-content"],
     targetSolution: {
       "flex-direction": "row-reverse",
@@ -133,8 +133,8 @@ const levels = [
   },
   {
     id: 8,
-    title: "שלב 8: טור הפוך ואנכי (column-reverse)",
-    instructions: "סדרו את הכפפות בטור הפוך מלמטה למעלה (column-reverse), פזרו אותן במרווח שווה (space-between) ומרכזו אותן לרוחב (center)!",
+    title: "שלב 8: טור הפוך ואנכי",
+    instructions: "סדרו את הכפפות בטור הפוך מלמטה למעלה , פזרו אותן במרווח שווה ומרכזו אותן לרוחב!",
     controls: ["flex-direction", "justify-content", "align-items"],
     targetSolution: {
       "flex-direction": "column-reverse",
@@ -155,7 +155,7 @@ const levels = [
   {
     id: 9,
     title: "שלב 9: נוקאאוט בגלישה (flex-wrap)",
-    instructions: "ישנן 7 כפפות בזירה! השתמשו ב-flex-wrap: wrap וב-justify-content: center כדי לגרום לכפפות לגלוש לשורה שנייה ולהתמרכז בזירה!",
+    instructions: "ישנן 7 כפפות בזירה! שים לב שחלקן גלשו אל מחוץ לזירה, השתמשו ב-flex-wrap וב-justify-content כדי לגרום לכפפות לגלוש לשורה שנייה ולהתמרכז בזירה!",
     controls: ["flex-wrap", "justify-content"],
     targetSolution: {
       "flex-wrap": "wrap",
@@ -178,7 +178,7 @@ const levels = [
   {
     id: 10,
     title: "שלב 10: קרב האליפות - מאסטר Flexbox!",
-    instructions: "האתגר הפינאלי! סדרו 6 כפפות בזירה. עליכם לשלב 4 מאפיינים בו-זמנית: flex-direction: column-reverse, flex-wrap: wrap-reverse, justify-content: space-between ו-align-content: space-around!",
+    instructions: "האתגר הפינאלי! סדרו 6 כפפות בזירה. עליכם לשלב 4 מאפיינים בו-זמנית: flex-direction, flex-wrap, justify-content ו-align-content!",
     controls: ["flex-direction", "flex-wrap", "justify-content", "align-content"],
     targetSolution: {
       "flex-direction": "column-reverse",
